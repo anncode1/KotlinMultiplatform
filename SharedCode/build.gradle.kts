@@ -1,21 +1,10 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
-//val buildToolsVersion: String by project
-
 plugins {
     //id("com.android.library")
     kotlin("multiplatform")
 }
 
-/*android {
-    compileSdkVersion(30)
-    buildToolsVersion = buildToolsVersion
-    defaultConfig {
-        minSdkVersion(21)
-        targetSdkVersion(30)
-    }
-}
-*/
 kotlin {
     //select iOS target platform depending on the Xcode environment variables
     val iOSTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget =
@@ -33,14 +22,23 @@ kotlin {
     }
 
     jvm("android")
-    //android()
 
     sourceSets["commonMain"].dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
+        implementation("io.ktor:ktor-client:1.0.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.6")
     }
 
     sourceSets["androidMain"].dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        implementation("io.ktor:ktor-client-android:1.1.4")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6")
+    }
+
+    sourceSets["iosMain"].dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        implementation("io.ktor:ktor-client-ios:1.1.4")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.6")
     }
 }
 
