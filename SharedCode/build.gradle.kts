@@ -27,11 +27,14 @@ kotlin {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
         implementation("io.ktor:ktor-client:1.0.0")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.6")
+        implementation("io.ktor:ktor-client-json:1.0.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.0")
     }
 
     sourceSets["androidMain"].dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib")
-        implementation("io.ktor:ktor-client-android:1.1.4")
+        //implementation("io.ktor:ktor-client-android:1.1.4")
+        implementation("io.ktor:ktor-client-json-jvm:1.0.0")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6")
     }
 
